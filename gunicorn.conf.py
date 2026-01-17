@@ -1,4 +1,4 @@
-bind = "127.0.0.1:9532"
+bind = "127.0.0.1:9534"
 workers = 4
 forwarded_allow_ips = "*"
 
