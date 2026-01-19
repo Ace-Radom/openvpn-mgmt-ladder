@@ -1,6 +1,6 @@
 import base64
 
-from app import data
+from app import config, data, server
 from flask import Blueprint, jsonify, make_response
 
 bp = Blueprint("subscribe", __name__)
@@ -24,7 +24,15 @@ def subscribe(token: str):
                 "msg": "Link list with this token doesn't exist",
             }
         ), 500
+    server_list_len = len(server_list)
+    server_list.insert(0, server.generate_msg_server_link(f"服务器数量：{server_list_len}"))
     
+    if config.config["data"]["allow_server_msg"]:
+        server_msgs = server.generate_server_msg_server_link_list()
+        if server_msgs is not None:
+            for msg in reversed(server_msgs):
+                server_list.insert(1, msg)
+
     server_str = ""
     for link in server_list:
         server_str += link

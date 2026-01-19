@@ -1,0 +1,6 @@
+[app]
+is_production_env=0
+
+[data]
+store_dir=/var/openvpn-mgmt/ladder/data
+allow_server_msg=1
