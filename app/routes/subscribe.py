@@ -3,11 +3,11 @@ import base64
 from app import links
 from flask import Blueprint, jsonify, make_response
 
-bp = Blueprint("link", __name__)
+bp = Blueprint("subscribe", __name__)
 
 
-@bp.route("/link/<token>")
-def link(token: str):
+@bp.route("/subscribe/<token>")
+def subscribe(token: str):
     if not links.token_exists(token):
         return jsonify(
             {
