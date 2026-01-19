@@ -2,8 +2,8 @@ import configparser
 
 config = {
     "app": {"is_production_env": False},
-    "link": {
-        "store_dir": "/var/openvpn-mgmt/ladder/link"
+    "data": {
+        "store_dir": "/var/openvpn-mgmt/ladder/data"
     }
 }
 
@@ -16,8 +16,8 @@ def parse_config(config_path: str) -> None:
         if parser.has_option("app", "is_production_env") and len(parser["app"]["is_production_env"]) != 0 and parser["app"]["is_production_env"].isdigit():
             config["app"]["is_production_env"] = int(parser["app"]["is_production_env"]) != 0
         
-    if parser.has_section("link"):
-        if parser.has_option("link", "store_dir") and len(parser["link"]["store_dir"]) != 0:
-            config["link"]["store_dir"] =  parser["link"]["store_dir"]
+    if parser.has_section("data"):
+        if parser.has_option("data", "store_dir") and len(parser["data"]["store_dir"]) != 0:
+            config["data"]["store_dir"] =  parser["data"]["store_dir"]
 
     return
